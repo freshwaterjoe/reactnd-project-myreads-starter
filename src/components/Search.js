@@ -6,7 +6,6 @@ import {Component} from 'react'
 class Search extends Component {
 
     static propTypes = {
-        books: PropTypes.array.isRequired,
     }
 
     state = {
@@ -15,6 +14,10 @@ class Search extends Component {
 
 
     render() {
+
+        let books
+
+
         return (
             <div className='search-books'>
                 <div className="search-books-bar">
@@ -32,7 +35,9 @@ class Search extends Component {
                     </div>
                 </div>
                 <div className="search-books-results">
-                    <ol className="books-grid"></ol>
+                    <ol className="books-grid">
+                        {this.props.books}
+                    </ol>
                 </div>
             </div>
         )
