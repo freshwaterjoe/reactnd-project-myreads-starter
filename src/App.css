@@ -5,20 +5,20 @@ body {
   line-height: 1.5;
 }
 body, .app {
-  background: white;
+  background: #eb6f30;
 }
 
 /* main page */
 
 .list-books-title {
   padding: 10px 0;
-  background: #2e7c31;
+  background: #4f6d7a;
   text-align: center;
 }
 .list-books-title h1 {
   font-weight: 400;
   margin: 0;
-  color: white;
+  color: #eb6f30;
 }
 
 .list-books-content {
@@ -38,6 +38,7 @@ body, .app {
 
 .bookshelf-title {
   border-bottom: 1px solid #dedede;
+  color: white;
 }
 .bookshelf-books {
   text-align: center;
@@ -53,7 +54,7 @@ body, .app {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background: #2e7d32;
+  background: #4f6d7a;
   background-image: url('./icons/add.svg');
   background-repeat: no-repeat;
   background-position: center;
@@ -128,9 +129,11 @@ body, .app {
 }
 .book-title {
   margin-top: 10px;
+  font-weight: bold;
+  color: white;
 }
 .book-authors {
-  color: #999;
+  color: white;
 }
 
 .book-top {
@@ -147,7 +150,7 @@ body, .app {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: #60ac5d;
+  background: #4f6d7a;
   background-image: url('./icons/arrow-drop-down.svg');
   background-repeat: no-repeat;
   background-position: center;
