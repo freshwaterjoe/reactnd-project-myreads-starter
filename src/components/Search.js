@@ -9,13 +9,14 @@ class Search extends Component {
     }
 
     state = {
-        query: ''
+        query: '',
+        searchResults: []
     }
 
 
     render() {
 
-        let books
+        const { query, searchResults } = this.state
 
 
         return (
@@ -31,7 +32,6 @@ class Search extends Component {
                  you don't find a specific author or title. Every search is limited by search terms.
                */}
                         <input type="text" placeholder="Search by title or author"/>
-
                     </div>
                 </div>
                 <div className="search-books-results">

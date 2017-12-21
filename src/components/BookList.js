@@ -3,7 +3,7 @@ import BookShelf from './BookShelf'
 import {Route, Link} from 'react-router-dom'
 import Search from './Search'
 
-class BookListApp extends Component {
+class BookList extends Component {
 
 
 
@@ -42,4 +42,4 @@ class BookListApp extends Component {
     }
 }
 
-export default BookListApp
+export default BookList
