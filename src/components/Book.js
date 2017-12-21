@@ -6,28 +6,36 @@ import BookShelfChanger from './BookShelfChanger'
 // This file will be the Book component
 class Book extends Component {
 
-    /**
-    static propTypes = {
-        title: PropTypes.string().isRequired,
-        author: PropTypes.string().isRequired
-    }
-     */
 
-    state = {
-        bookStatus: ''
+    static propTypes = {
+        book: PropTypes.object.isRequired,
+        books: PropTypes.array.isRequired,
+        OnBookMove: PropTypes.func.isRequired
     }
+
+    // no state required
+
+    // TODO: why is book image not showing?
 
 
     render() {
+        const {books, book, onBookMove} = this.props
+        const style = {
+            width: 128,
+            height: 193
+        }
+        const bookAuthors = book.authors
 
         return (
             <div className="book">
                 <div className="book-top">
-                    <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: 'url("http://books.google.com/books/content?id=uu1mC6zWNTwC&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE73pGHfBNSsJG9Y8kRBpmLUft9O4BfItHioHolWNKOdLavw-SLcXADy3CPAfJ0_qMb18RmCa7Ds1cTdpM3dxAGJs8zfCfm8c6ggBIjzKT7XR5FIB53HHOhnsT7a0Cc-PpneWq9zX&source=gbs_api")' }}></div>
-                    <BookShelfChanger/>
+                    <div className="book-cover" style={{style}}></div>
+                    <BookShelfChanger book={book} books={books} onBookMove={onBookMove}/>
                 </div>
-                <div className="book-title">titleTest</div>
-                <div className="book-authors">authorTest</div>
+                <div className="book-title">{book.title}</div>
+                {book.authors && book.authors.map((author, index) => (
+                        <div className="book-authors" key={index}>{author}</div>
+                    ))}
             </div>
         )
 
