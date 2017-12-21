@@ -1,7 +1,6 @@
 import React from 'react'
 import * as BooksAPI from './BooksAPI'
 import './App.css'
-import BookShelf from './components/BookShelf'
 import {Route, Link} from 'react-router-dom'
 import Search from './components/Search'
 import BookList from './components/BookList'
@@ -20,7 +19,9 @@ class BooksApp extends React.Component {
         },
 
         books : [],
-        shelfTitles : ['Currently Reading', 'Read', 'Wish List'],
+        shelves : [{ type: 'currentlyReading', title: 'Currently Reading' },
+                   { type: 'wantToRead',  title: 'Want to Read' },
+                   { type: 'read', title: 'Read'}]
   }
 
 
@@ -48,7 +49,7 @@ class BooksApp extends React.Component {
   }
 
 
-  
+
     /**
      * onBookMove function handles changes in a books shelf. passed down to child components as a prop
      * @param alteredBook - the book object to be moved
@@ -71,24 +72,36 @@ class BooksApp extends React.Component {
 
 
   render() {
-      const {books} = this.state
+      const {books, onBookMove, bookSearch, shelves} = this.state
 
     return (
       <div className="app">
           <Route exact path="/" component={
               props => {
                   return (
-                      <BookList books={books} onBookMove={this.onBookMove} bookSearch={this.bookSearch}/>
+                      <div className="list-books">
+                          <div className="list-books-title">
+                              <h1>MyReads</h1>
+                          </div>
+                        <BookList   books={books}
+                                    onBookMove={onBookMove}
+                                    shelves={shelves}/>
+
+                          <div className="open-search">
+                              <Link to="/search">Search</Link>
+                          </div>
+                      </div>
                   )
               }} />
 
-          <Route exact path='/search' component={
-              props => {
-                  return (
-                      <Search books={books}  onBookMove={this.onBookMove}/>
-                  )
-              }
-          }/>
+          <Route path="/search" render={( { history }) => (
+              <Search
+                  books={ books }
+                  onBookMove={onBookMove}
+                  bookSearch={bookSearch}
+              />
+          )} />
+
       </div>
         )}
 }

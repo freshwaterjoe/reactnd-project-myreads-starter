@@ -39,15 +39,4 @@ class Book extends Component {
 }
 
 
-// Declaring the types of properties we want to be receiving with each book component
-Book.propTypes ={
-    id: PropTypes.string,
-    currentShelf: PropTypes.string,
-    updateStateWithBooks: PropTypes.func,
-    authors: PropTypes.array,
-    title: PropTypes.string,
-    backgroundImage: PropTypes.string
-}
-
-
 export default Book

@@ -1,43 +1,35 @@
 import React, {Component} from 'react'
 import BookShelf from './BookShelf'
-import {Route, Link} from 'react-router-dom'
 import Search from './Search'
+import PropTypes from 'prop-types'
 
 class BookList extends Component {
 
 
-
+    static propTypes = {
+        books: PropTypes.array.isRequired,
+        onBookMove: PropTypes.func.isRequired,
+        shelves: PropTypes.array.isRequired
+    }
 
     render() {
+        const {books, onBookMove, shelves} = this.props
         return(
-            <div className='book-list-app'>
-                <Route  exact path='/' render={() => (
-                    <div className='list-books'>
-                        <div className="list-books-title">
-                            <h1>MyReads</h1>
-                        </div>
-                        <div className="list-books-content">
-                            <div>
-                                <BookShelf shelfTitle={'Currently Reading'}/>
-                                <BookShelf shelfTitle={'Want To Read'}/>
-                                <BookShelf shelfTitle={'Read'}/>
+            <div className="list-books-content">
+                {shelves.map((shelf, index) => {
+                    const booksOnShelf = books.filter(book => book.shelf === shelf.type)
+                    return (
+                        <div className="bookshelf">
+                            <h2 className="bookshelf-title">{shelf.title}</h2>
+                            <div className="bookshelf-books">
+                                <BookShelf books={booksOnShelf} onBookMove={onBookMove}/>
                             </div>
                         </div>
-                    </div>
-                )}/>
+                    )
+                })}
 
-                <Route exact path='/search' component={
-                    props => {
-                        return (
-                            <Search bookSearch={this.props.bookSearch()}/>
-                        )
-                    }
-                }/>
-
-                <div className="open-search">
-                    <Link to='/search' className='add-book'>Add a book</Link>
-                </div>
             </div>
+
         )
     }
 }
