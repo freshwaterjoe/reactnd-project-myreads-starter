@@ -10,7 +10,7 @@ class Book extends Component {
     static propTypes = {
         book: PropTypes.object.isRequired,
         books: PropTypes.array.isRequired,
-        OnBookMove: PropTypes.func.isRequired
+        onBookMove: PropTypes.func.isRequired
     }
 
     // no state required

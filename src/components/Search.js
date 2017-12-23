@@ -33,7 +33,7 @@ class Search extends Component {
             })
 
             // else if no query, display all books
-        } else this.setState({searchResults: [], searchErr: false })
+        } else this.setState({searchResults: [], queryError: false })
     }
 
 
@@ -71,7 +71,7 @@ class Search extends Component {
                                         book={book}
                                         books={books}
                                         key={book.id}
-                                        onbookmove={onBookMove}
+                                        onBookmove={this.props.onBookMove}
                                     />
                                 ))}
                             </ol>

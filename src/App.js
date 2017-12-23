@@ -35,21 +35,6 @@ class BooksApp extends React.Component {
   }
 
 
-    /**
-     *
-     * @param query - string to be searched
-     */
-  bookSearch(query) {
-        BooksAPI.search(query).then( data => {
-            const results = { query: query, results: []}
-            if (!data.error) {
-                results.items = data
-            }
-            this.setState({results})
-        })
-  }
-
-
 
     /**
      * onBookMove function handles changes in a books shelf. passed down to child components as a prop
@@ -94,11 +79,11 @@ class BooksApp extends React.Component {
                       </div>
                   )
               }} />
-
+   
           <Route exact path="/search" render={( { history }) => (
               <Search
                   books={books}
-                  onBookMove={onBookMove}
+                  onBookMove={this.onBookMove}
               />
           )} />
 
