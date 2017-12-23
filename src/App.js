@@ -95,11 +95,10 @@ class BooksApp extends React.Component {
                   )
               }} />
 
-          <Route path="/search" render={( { history }) => (
+          <Route exact path="/search" render={( { history }) => (
               <Search
-                  books={ books }
+                  books={books}
                   onBookMove={onBookMove}
-                  bookSearch={bookSearch}
               />
           )} />
 
