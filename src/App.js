@@ -10,6 +10,7 @@ class BooksApp extends React.Component {
     constructor(props) {
         super(props)
         // Add all functions to be binded here
+        this.onBookMove = this.onBookMove.bind(this);
     }
 
     state = {
@@ -84,7 +85,7 @@ class BooksApp extends React.Component {
                               <h1>MyReads</h1>
                           </div>
                         <BookList   books={books}
-                                    onBookMove={onBookMove}
+                                    onBookMove={this.onBookMove}
                                     shelves={shelves}/>
 
                           <div className="open-search">

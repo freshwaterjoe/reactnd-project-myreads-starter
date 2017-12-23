@@ -23,7 +23,7 @@ class BookShelf extends Component {
                         book={book}
                         books={books}
                         key={book.id}
-                        onBookMove={onBookMove}
+                        onBookMove={this.props.onBookMove}
                     />
                 ))}
             </ol>
