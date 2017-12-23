@@ -40,7 +40,7 @@ class Search extends Component {
 
     render() {
 
-        const { searchQuery, searchResults } = this.state
+        const { searchQuery, searchResults, queryError } = this.state
         const {books, onBookMove } = this.props
 
 
@@ -71,13 +71,13 @@ class Search extends Component {
                                         book={book}
                                         books={books}
                                         key={book.id}
-                                        onbookmove={this.props.onBookMove}
+                                        onbookmove={onBookMove}
                                     />
                                 ))}
                             </ol>
                         </div>
                     )}
-                    { searchResults  && (
+                    { queryError && (
                         <div>
                             <div className=''>
                                 <h3>No search results, try again!</h3>
